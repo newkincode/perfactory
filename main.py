@@ -43,6 +43,11 @@ while runing:
             if mouse_presses[0]:
                 tilemap[musTile[1]][musTile[0]] = 2
                 print(musTile)
+    try:
+        if pygame.mouse.get_pressed()[0] == 1:
+            tilemap[musTile[1]][musTile[0]] = 2
+            print(musTile)
+    except:pass
     print(musTilePos)
     screen.fill(SKYBLUE)  # 화면 채우기
     tilePos = [0, 0]
