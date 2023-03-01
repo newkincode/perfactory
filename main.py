@@ -11,7 +11,7 @@ pygame.init()
 hw = (960, 640)
 screen = pygame.display.set_mode(hw)
 runing = True
-var = "alpha 0.1"
+var = "alpha 0.2"
 tilemap = tiles.tileMap
 # 마우스
 musPos = pygame.mouse.get_pos()
