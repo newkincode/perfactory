@@ -13,7 +13,7 @@ def setSelect(a):
     save.write(json.dumps({"selectItem":a}))
     save.close()
 
-window.title("YUN DAE HEE")
+window.title("sfg2컨트롤")
 window.geometry("640x400")
 window.resizable(False, False)
 

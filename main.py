@@ -40,8 +40,8 @@ def opneDef():
 
 # 세팅
 pygame.display.set_caption(f"SFG2 {var}! - by newkini") # 창 이름
-#pygame.mouse.set_cursor((32, 32),(0, 0),cusImg,(0,0))#(32,32),(0,0),(0,0),
-print(pygame.cursors.arrow)
+pygame.mouse.set_visible(False)
+
 while runing:
     opneDef()
     musPos = pygame.mouse.get_pos()
@@ -55,7 +55,6 @@ while runing:
             tilemap[musTile[1]][musTile[0]] = itemList[selectItem]
             print(musTile)
     except:pass
-    print(musTilePos)
     screen.fill(SKYBLUE)  # 화면 채우기
     tilePos = [0, 0]
     for line in tilemap:
@@ -75,6 +74,7 @@ while runing:
     conveyorBeltImg.set_alpha(128)
     screen.blit(conveyorBeltImg,musTilePos)
     conveyorBeltImg.set_alpha(255)
+    screen.blit(cusImg,musPos)
 
     pygame.display.update()  # 화면 업데이트
 
