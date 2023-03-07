@@ -25,13 +25,13 @@ canvas.create_rectangle(10, 10, 278, 278, outline='black', width=3)
 selectText=tkinter.Label(window, text="아이템 선택")
 selectText.place(x=50, y=30)
 
-conveyorBeltBtn = tkinter.Button(window,image=conveyorBeltImg, command=lambda: setSelect(0))
+conveyorBeltBtn = tkinter.Button(window,image=conveyorBeltImg, command=lambda: setSelect(2))
 conveyorBeltBtn.place(x=70, y=62)
 
-conveyorBeltULBtn = tkinter.Button(window,image=conveyorBeltImgUL, command=lambda: setSelect(1))
+conveyorBeltULBtn = tkinter.Button(window,image=conveyorBeltImgUL, command=lambda: setSelect(3))
 conveyorBeltULBtn.place(x=122, y=62)
 
-conveyorBeltLRBtn = tkinter.Button(window,image=conveyorBeltImgLR, command=lambda: setSelect(2))
+conveyorBeltLRBtn = tkinter.Button(window,image=conveyorBeltImgLR, command=lambda: setSelect(4))
 conveyorBeltLRBtn.place(x=174, y=62)
 
 

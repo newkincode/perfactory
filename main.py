@@ -1,7 +1,9 @@
 import pygame
 import lib.tile as tiles
+import lib.draw as draw
 import math
 import json
+from typing import Tuple, Dict
 
 # 단어장
 # mouses = mus
@@ -21,17 +23,21 @@ cusImg: pygame.Surface = pygame.image.load("asset/img/mouseCus.png")
 SKYBLUE = (113, 199, 245)
 # 타일 이미지
 tileImg: pygame.Surface = pygame.image.load("asset/img/tile.png")
-conveyorBeltImgs: dict[str, pygame.Surface] = {
-    "downUp" : pygame.image.load("asset/img/conveyor_belt.png"),
-    "upLeft" : pygame.image.load("asset/img/conveyor_belt_up_left.png"),
-    "leftRight" : pygame.image.load("asset/img/conveyor_belt_left_right.png")
+conveyorBelt: dict[str, tuple[pygame.Surface, int]] = {
+    "downUp" : (pygame.image.load("asset/img/conveyor_belt.png"),2),
+    "upLeft" : (pygame.image.load("asset/img/conveyor_belt_up_left.png"),3),
+    "leftRight" : (pygame.image.load("asset/img/conveyor_belt_left_right.png"),4)
+}
+machine: dict[str, tuple[pygame.Surface, int]] = {
+    "mining" : (pygame.image.load("asset/img/mining_machine.png"),5),
+}
+stuff: dict[str, tuple[pygame.Surface, int]] = {
+    "tree" : (pygame.image.load("asset/img/tree.png"),6),
 }
 
 # 아이템
-itemNumList: list = [2,3,4]
 # itemList: dict[str, int] = [2,3,4]
-selectItem: int = 1
-
+selectItem: int =  6
 def opneDef():
     global selectItem
     try:
@@ -58,27 +64,21 @@ while runing:
             runing = False
     try:
         if pygame.mouse.get_pressed()[0] == 1:
-            tilemap[musTile[1]][musTile[0]] = itemNumList[selectItem]
+            tilemap[musTile[1]][musTile[0]] = selectItem
             print(musTile)
     except:pass
     screen.fill(SKYBLUE)  # 화면 채우기
-    tilePos = [0, 0]
-    for line in tilemap:
-        for tile in line:
-            screen.blit(tileImg, tilePos)
-            if tile == 2:
-                screen.blit(conveyorBeltImgs["downUp"], tilePos)
-            if tile == 3:
-                screen.blit(conveyorBeltImgs["upLeft"], tilePos)
-            if tile == 4:
-                screen.blit(conveyorBeltImgs["leftRight"], tilePos)
-            tilePos[0] += 32
-        tilePos[1] += 32
-        tilePos[0] = 0
-    
-    conveyorBeltImgs["downUp"].set_alpha(128)
-    screen.blit(conveyorBeltImgs["downUp"],musTilePos)
-    conveyorBeltImgs["downUp"].set_alpha(255)
+    draw.tileDraw(
+        screen=screen,
+        tilemap=tilemap,
+        tileImg=tileImg,
+        conveyorBelt=conveyorBelt,
+        machine=machine,
+        stuff=stuff
+    )
+    conveyorBelt["downUp"][0].set_alpha(128)
+    screen.blit(conveyorBelt["downUp"][0],musTilePos)
+    conveyorBelt["downUp"][0].set_alpha(255)
     screen.blit(cusImg,musPos)
 
     pygame.display.update()  # 화면 업데이트
