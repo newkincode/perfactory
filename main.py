@@ -3,16 +3,17 @@ import lib.tile as tiles
 import math
 import json
 
+# 단어장
 # mouses = mus
 
 pygame.init()
 
 # 변수
 hw: tuple = (960, 640) # 창크기변수
-screen = pygame.display.set_mode(hw)
-runing = True
-var = "alpha 0.2"
-tilemap = tiles.tileMap
+screen: pygame.Surface = pygame.display.set_mode(hw)
+runing: bool = True
+var: str = "alpha 0.2"
+tilemap: list = tiles.tileMap
 # 마우스
 musPos: tuple = pygame.mouse.get_pos()
 cusImg: pygame.Surface = pygame.image.load("asset/img/mouseCus.png")
@@ -27,7 +28,8 @@ conveyorBeltImgs: dict[str, pygame.Surface] = {
 }
 
 # 아이템
-itemList: list = [2,3,4]
+itemNumList: list = [2,3,4]
+# itemList: dict[str, int] = [2,3,4]
 selectItem: int = 1
 
 def opneDef():
@@ -56,15 +58,14 @@ while runing:
             runing = False
     try:
         if pygame.mouse.get_pressed()[0] == 1:
-            tilemap[musTile[1]][musTile[0]] = itemList[selectItem]
+            tilemap[musTile[1]][musTile[0]] = itemNumList[selectItem]
             print(musTile)
     except:pass
     screen.fill(SKYBLUE)  # 화면 채우기
     tilePos = [0, 0]
     for line in tilemap:
         for tile in line:
-            if (tile == 1) or (tile in itemList):
-                screen.blit(tileImg, tilePos)
+            screen.blit(tileImg, tilePos)
             if tile == 2:
                 screen.blit(conveyorBeltImgs["downUp"], tilePos)
             if tile == 3:
