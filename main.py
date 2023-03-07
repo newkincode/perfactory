@@ -37,7 +37,7 @@ def opneDef():
     try:
         save = open("data/playerData.json","r")
         saveData: dict = json.load(save)
-        selectItem: int = saveData["selectItem"]
+        # selectItem: int = saveData["selectItem"]
     except:pass
 
 # 세팅
