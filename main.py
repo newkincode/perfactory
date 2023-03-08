@@ -36,7 +36,6 @@ stuff: dict[str, tuple[pygame.Surface, int]] = {
 }
 
 # 아이템
-# itemList: dict[str, int] = [2,3,4]
 selectItem: int =  6
 def opneDef():
     global selectItem
@@ -59,15 +58,19 @@ while runing:
     musTile: list = [math.trunc(musPos[0]/32), math.trunc(musPos[1]/32)]
     musTilePos: list = [32*musTile[0], 32*musTile[1]]
 
+    # 키입력
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        if event.type == pygame.QUIT: # 나가기
             runing = False
-    try:
+
+    try: # 타일 설치
         if pygame.mouse.get_pressed()[0] == 1:
             tilemap[musTile[0]][musTile[1]] = selectItem
     except:pass
+
+    # 그리기
     screen.fill(SKYBLUE)  # 화면 채우기
-    draw.tileDraw(
+    draw.tileDraw( # 타일맵 그리기
         screen=screen,
         tilemap=tilemap,
         tileImg=tileImg,
@@ -75,10 +78,10 @@ while runing:
         machine=machine,
         stuff=stuff
     )
-    conveyorBelt["downUp"][0].set_alpha(128)
-    screen.blit(conveyorBelt["downUp"][0],musTilePos)
-    conveyorBelt["downUp"][0].set_alpha(255)
-    screen.blit(cusImg,musPos)
+    conveyorBelt["downUp"][0].set_alpha(128) # 반투명 설정
+    screen.blit(conveyorBelt["downUp"][0],musTilePos) # 유령 아이콘 그리기
+    conveyorBelt["downUp"][0].set_alpha(255) # 불투명 설정
+    screen.blit(cusImg,musPos) # 커서 그리기
 
     pygame.display.update()  # 화면 업데이트
 
