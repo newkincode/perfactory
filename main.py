@@ -65,7 +65,6 @@ while runing:
     try:
         if pygame.mouse.get_pressed()[0] == 1:
             tilemap[musTile[0]][musTile[1]] = selectItem
-            print(musTile)
     except:pass
     screen.fill(SKYBLUE)  # 화면 채우기
     draw.tileDraw(
