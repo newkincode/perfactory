@@ -14,6 +14,6 @@ def tileDraw(screen, tilemap, tileImg, conveyorBelt, machine, stuff):
             elif tile == 6:
                 screen.blit(stuff["tree"][0], tilePos)
                 print("a")
-            tilePos[0] += 32
-        tilePos[1] += 32
-        tilePos[0] = 0
+            tilePos[1] += 32
+        tilePos[0] += 32
+        tilePos[1] = 0
