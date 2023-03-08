@@ -15,7 +15,7 @@ hw: tuple = (960, 640) # 창크기변수
 screen: pygame.Surface = pygame.display.set_mode(hw)
 runing: bool = True
 var: str = "alpha 0.2"
-tilemap: list = tiles.tileMap
+tilemap: list[list[int]] = tiles.tileMap
 # 마우스
 musPos: tuple = pygame.mouse.get_pos()
 cusImg: pygame.Surface = pygame.image.load("asset/img/mouseCus.png")

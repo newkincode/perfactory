@@ -1,3 +1,3 @@
 class Item:
-    def __init__(self) -> None:
+    def __init__(self, tilemap) -> None:
         pass
