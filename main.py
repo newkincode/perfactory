@@ -23,15 +23,11 @@ cusImg: pygame.Surface = pygame.image.load("asset/img/mouseCus.png")
 SKYBLUE = (113, 199, 245)
 # 타일 이미지
 tileImg: pygame.Surface = pygame.image.load("asset/img/tile.png")
-conveyorBelt: dict[str, tuple[pygame.Surface, int]] = {
-    "downUp" : (pygame.image.load("asset/img/conveyor_belt.png"),2),
-    "upLeft" : (pygame.image.load("asset/img/conveyor_belt_up_left.png"),3),
-    "leftRight" : (pygame.image.load("asset/img/conveyor_belt_left_right.png"),4)
-}
-machine: dict[str, tuple[pygame.Surface, int]] = {
-    "mining" : (pygame.image.load("asset/img/mining_machine.png"),5),
-}
-stuff: dict[str, tuple[pygame.Surface, int]] = {
+tile: dict[str, tuple[pygame.Surface, int]] = {
+    "conveyorBeltDownUp" : (pygame.image.load("asset/img/conveyor_belt.png"),2),
+    "conveyorBeltUpLeft" : (pygame.image.load("asset/img/conveyor_belt_up_left.png"),3),
+    "conveyorBeltLeftRight" : (pygame.image.load("asset/img/conveyor_belt_left_right.png"),4),
+    "miningMachine" : (pygame.image.load("asset/img/mining_machine.png"),5),
     "tree" : (pygame.image.load("asset/img/tree.png"),6),
 }
 
@@ -74,13 +70,11 @@ while runing:
         screen=screen,
         tilemap=tilemap,
         tileImg=tileImg,
-        conveyorBelt=conveyorBelt,
-        machine=machine,
-        stuff=stuff
+        tiles=tile
     )
-    conveyorBelt["downUp"][0].set_alpha(128) # 반투명 설정
-    screen.blit(conveyorBelt["downUp"][0],musTilePos) # 유령 아이콘 그리기
-    conveyorBelt["downUp"][0].set_alpha(255) # 불투명 설정
+    tile["conveyorBeltDownUp"][0].set_alpha(128) # 반투명 설정
+    screen.blit(tile["conveyorBeltDownUp"][0],musTilePos) # 유령 아이콘 그리기
+    tile["conveyorBeltDownUp"][0].set_alpha(255) # 불투명 설정
     screen.blit(cusImg,musPos) # 커서 그리기
 
     pygame.display.update()  # 화면 업데이트
