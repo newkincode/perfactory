@@ -13,3 +13,5 @@ class Mining:
         for i in range(2,7):
             if self.tilemap[self.tilePos[1]][self.tilePos[0]-1] == i:
                 return i
+    def draw(self, screen,img):
+        screen.blit(img, self.pos)
