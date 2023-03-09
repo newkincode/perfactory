@@ -22,8 +22,6 @@ canvas.place(x=50, y=30)
 
 canvas.create_rectangle(10, 10, 278, 278, outline='black', width=3)
 
-selectText=tkinter.Label(window, text="아이템 선택")
-selectText.place(x=50, y=30)
 
 conveyorBeltBtn = tkinter.Button(window,image=conveyorBeltImg, command=lambda: setSelect(2))
 conveyorBeltBtn.place(x=70, y=62)
